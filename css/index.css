@@ -4,15 +4,13 @@
   height: 100%;
   width: 100%;
   z-index: 9999;
-  opacity: 0.9;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0,0,0,0.1);
 }
 
 .loading-cover .spinner {
-  overflow: auto;  
-  margin: auto;  
-  position: absolute;  
-  top: 0; left: 0; bottom: 0; right: 0;  
+  overflow: auto;
+  position: absolute;
+  top: 50px; left: 50px;
   width: 100px;
   height: 100px;
   background-color: #209e85;

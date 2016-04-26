@@ -7,7 +7,10 @@ function removeElement(_element){
 
 var cleanByClassName = function (name) {
     try {
-        removeElement(document.getElementsByClassName(name)[0])
+        var els = document.getElementsByClassName(name)
+        Array.prototype.forEach.call(els, function(el) {
+            removeElement(el)
+        })
     } catch(err) {}
 }
 
@@ -19,7 +22,11 @@ var cleanById = function (id) {
 
 var cleanByTagName = function (tag) {
     try {
-        removeElement(document.getElementsByTagName(tag)[0])
+        var els = document.getElementsByTagName(tag)
+        console.log(els.length)
+        Array.prototype.forEach.call(els, function(el) {
+            removeElement(el)
+        })
     } catch(err) {}
 }
 

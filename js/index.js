@@ -63,15 +63,18 @@ document.onmouseup = mouseHandle
 
 // 干掉页面守卫
 window.guardian = {}
+var cleanList = {
+    className: ['top-banner-ad-container', 'js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
+    id: ['header'],
+    tagName: ['aside']
+}
+clean(cleanList)
+getstyle(".content__main-column").setProperty('margin', 'auto', 'important')
+
 window.onload = function () {
     window.guardian = {}
     
     // 清除页面垃圾信息
-    var cleanList = {
-        className: ['js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
-        id: ['header'],
-        tagName: ['aside']
-    }
     clean(cleanList)
     
     // 关闭loading
