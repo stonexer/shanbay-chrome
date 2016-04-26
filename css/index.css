@@ -1,0 +1,89 @@
+.loading-cover {
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  opacity: 0.8;
+  background-color: rgb(0, 0, 0);
+}
+
+.loading-cover .spinner {
+  overflow: auto;  
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;  
+  width: 100px;
+  height: 100px;
+  background-color: #67CF22;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+.shanbay-box {
+  display: none;
+  position: relative;
+  height: 100px;
+  width: 200px;
+  z-index: 9999;
+  border-radius: 3px;
+  border: 1px solid #67CF22;
+  box-shadow: 0 0 6px 2px rgba(0,0,0,.2);
+}
+
+.up-button {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 20px solid #67CF22;
+  font-size: 0;
+  line-height: 0;
+
+  opacity: 0.5;
+  position: fixed;
+  z-index: 9999;
+  padding: 0px;
+  bottom: 20px;
+  right: 20px;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.down-button {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 20px solid #67CF22;
+  font-size: 0;
+  line-height: 0;
+  
+  opacity: 0.5;
+  position: fixed;
+  z-index: 9999;
+  padding: 0px;
+  bottom: 50px;
+  right: 20px;
+  margin: 0px;
+  cursor: pointer;
+}

@@ -1,0 +1,30 @@
+{
+	"manifest_version" : 2,
+	"name" : "shanbay",
+	"description" : "shanbay",
+	"version" : "0.1",
+	"permissions" : [
+		"tabs",
+		"http://www.theguardian.com/*"
+	],
+	"icons" : {
+		"16":"imgs/S16.png", 
+		"48":"imgs/S48.png", 
+		"128":"imgs/S128.png"
+	},
+	"web_accessible_resources" : [
+		"js/index.js"
+	],
+	"content_scripts" : [
+		{
+			"matches" : ["http://www.theguardian.com/*"],
+			"css" : ["css/index.css"],
+			"js" : ["js/utils.js", "js/index.js"]
+		}
+	],
+	"browser_action" : {
+		"default_icon" : "imgs/S128.png",
+		"default_title" : "shanbay",
+		"default_popup": "popup.html"
+	}
+}
