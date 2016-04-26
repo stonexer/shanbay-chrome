@@ -1,15 +1,22 @@
+function removeElement(_element){
+    var _parentElement = _element.parentNode
+    if(_parentElement){
+        _parentElement.removeChild(_element)
+    }
+}
+
 var cleanByClassName = function (name) {
     try {
-        document.getElementsByClassName(name)[0].style.display = 'none'
+        removeElement(document.getElementsByClassName(name)[0])
     } catch(err) {}
 }
 
 var cleanById = function (id) {
-    document.getElementById(id).style.display = 'none'
+    removeElement(document.getElementById(id))
 }
 
 var cleanByTagName = function (tag) {
-    document.getElementsByTagName(tag)[0].style.display = 'none'
+    removeElement(document.getElementsByTagName(tag))
 }
 
 var clean = function (list) {

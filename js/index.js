@@ -13,10 +13,22 @@ var shanbayBox = document.createElement('div')
 shanbayBox.className = "shanbay-box"
 shanbayBox = document.body.appendChild(shanbayBox)
 
-document.ondblclick = function(e){
+var mouseHandle = function(e) {
     var text = getSelectedText()
-    shanbayBox.innerHTML = text
+    
+    if(text.replace(/(^\s*)|(\s*$)/g, "").length != 0) {
+        shanbayBox.innerHTML = text
+        var pos = calcBoxPos(e)
+        shanbayBox.style.top = pos.y + "px"
+        shanbayBox.style.left = pos.x + "px"
+        shanbayBox.style.display = 'block'
+    } else {
+        shanbayBox.style.display = 'none'
+    }
 }
+
+// document.ondblclick = mouseHandle
+document.onmouseup = mouseHandle
 
 // 干掉页面守卫
 window.guardian = {}
@@ -25,7 +37,7 @@ window.onload = function () {
     
     // 清除页面垃圾信息
     var cleanList = {
-        className: ['js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column'],
+        className: ['js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
         id: ['header'],
         tagName: ['aside']
     }
@@ -93,4 +105,24 @@ function getObjPos(obj) {
 		obj = obj.offsetParent
 	}
 	return pos
+}
+
+function calcBoxPos(e) {
+    var x = document.body.scrollLeft + e.clientX
+    var y = document.body.scrollTop + e.clientY
+    
+    y += 20
+    
+    if(e.clientY > innerHeight - 150) {
+        y -= 150
+    }
+    
+    if(e.clientX > innerWidth - 250) {
+        x -= 250
+    }
+    
+    return {
+        x: x,
+        y: y
+    }
 }
