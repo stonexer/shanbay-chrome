@@ -5,7 +5,8 @@
 	"version" : "0.1",
 	"permissions" : [
 		"tabs",
-		"http://www.theguardian.com/*"
+		"http://www.theguardian.com/*",
+		"https://api.shanbay.com/*"
 	],
 	"icons" : {
 		"16":"imgs/S16.png", 
