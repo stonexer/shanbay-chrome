@@ -12,11 +12,15 @@ var cleanByClassName = function (name) {
 }
 
 var cleanById = function (id) {
-    removeElement(document.getElementById(id))
+    try {
+        removeElement(document.getElementById(id))
+    } catch(err) {}
 }
 
 var cleanByTagName = function (tag) {
-    removeElement(document.getElementsByTagName(tag)[0])
+    try {
+        removeElement(document.getElementsByTagName(tag)[0])
+    } catch(err) {}
 }
 
 var clean = function (list) {
@@ -85,7 +89,7 @@ var clean = function (list) {
 })(window)
 
 
-(function(self) {
+;(function(self) {
   'use strict';
 
   if (self.fetch) {

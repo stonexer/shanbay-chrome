@@ -41,7 +41,6 @@ var mouseHandle = function(e) {
         })
         .then(function(json) {
             var data = json.data
-            console.log(data)
             boxDefinition.innerHTML = data.definition || '未找到定义'
             
             if(data.audio) {
