@@ -62,14 +62,16 @@ var mouseHandle = function(e) {
 document.onmouseup = mouseHandle
 
 // 干掉页面守卫
+try {
 window.guardian = {}
-var cleanList = {
-    className: ['top-banner-ad-container', 'js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
-    id: ['header'],
-    tagName: ['aside']
-}
-clean(cleanList)
-getstyle(".content__main-column").setProperty('margin', 'auto', 'important')
+    var cleanList = {
+        className: ['top-banner-ad-container', 'js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
+        id: ['header'],
+        tagName: ['aside']
+    }
+    clean(cleanList)
+    getstyle(".content__main-column").setProperty('margin', 'auto', 'important')
+} catch(err) {}
 
 window.onload = function () {
     window.guardian = {}
