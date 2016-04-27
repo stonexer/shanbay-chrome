@@ -30,7 +30,7 @@ var mouseHandle = function(e) {
         if(text.length > 20 && text.indexOf(' ') > -1) {
             return boxTitle.innerHTML = '目前只能测量单词哦'
         }
-        boxTitle.innerHTML = shanbayBoxWord = text.toLowerCase()
+        boxTitle.innerHTML = shanbayBoxWord = text
         boxDefinition.innerHTML = "正在搜索中..."
         var pos = calcBoxPos(e)
         shanbayBox.style.top = pos.y + "px"
@@ -43,7 +43,7 @@ var mouseHandle = function(e) {
         })
         .then(function(json) {
             var data = json.data
-            if(data.content == shanbayBoxWord) {
+            if(text == shanbayBoxWord) {
                 boxDefinition.innerHTML = data.definition || '未找到定义'
                 
                 if(data.audio) {
