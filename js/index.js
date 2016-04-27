@@ -30,7 +30,7 @@ var mouseHandle = function(e) {
         if(text.length > 20 && text.indexOf(' ') > -1) {
             return boxTitle.innerHTML = '目前只能测量单词哦'
         }
-        boxTitle.innerHTML = shanbayBoxWord = text
+        boxTitle.innerHTML = shanbayBoxWord = text.toLowerCase()
         boxDefinition.innerHTML = "正在搜索中..."
         var pos = calcBoxPos(e)
         shanbayBox.style.top = pos.y + "px"
@@ -43,7 +43,7 @@ var mouseHandle = function(e) {
         })
         .then(function(json) {
             var data = json.data
-            if(data.content === shanbayBoxWord) {
+            if(data.content == shanbayBoxWord) {
                 boxDefinition.innerHTML = data.definition || '未找到定义'
                 
                 if(data.audio) {
@@ -70,7 +70,7 @@ document.onmouseup = mouseHandle
 // 干掉页面守卫
 var cleanList = {
     className: ['top-banner-ad-container', 'js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
-    id: ['header','dfp-ad--inline1'],
+    id: ['header','dfp-ad--inline1','dfp-ad--inline2','dfp-ad--inline3'], // 也许是该用正则了，暂时没看到超过三个广告的，不过一般人都用adblock吧
     tagName: ['aside']
 }
 try {
