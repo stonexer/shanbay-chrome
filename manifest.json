@@ -20,7 +20,10 @@
 		{
 			"matches" : ["http://www.theguardian.com/*"],
 			"css" : ["css/index.css"],
-			"js" : ["js/utils.js", "js/index.js"]
+			"js" : [
+				"js/lib/animatedScrollTo.js", "js/lib/fetch.js",
+				"js/clean.js", "js/loading.js", "js/shanbayBox.js", "js/pageBox.js"
+			]
 		}
 	],
 	"browser_action" : {
