@@ -143,8 +143,8 @@ function calcBoxPos(e) {
         y -= 150
     }
     
-    if(e.clientX > innerWidth - 250) {
-        x -= 250
+    if(e.clientX > innerWidth - 200) {
+        x -= (e.clientX - innerWidth + 250)
     }
     
     return {
