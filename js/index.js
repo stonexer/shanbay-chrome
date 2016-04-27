@@ -2,10 +2,15 @@
 var spinner = document.createElement('div')
 spinner.className = "spinner"
 
+var loadingTitle = document.createElement('div')
+loadingTitle.className = "loading-title"
+loadingTitle.innerHTML = "扇贝助手加载中..."
+
 var loading = document.createElement('div')
 loading.className = "loading-cover"
 
 loading.appendChild(spinner)
+loading.appendChild(loadingTitle)
 loading = document.body.appendChild(loading)
 
 // 绑定点击事件
@@ -49,8 +54,8 @@ var mouseHandle = function(e) {
                 if(data.audio) {
                     var play = document.createElement('div')
                     play.className = "play"
+                    var audio = new Audio(data.audio)
                     play.onmouseover = function() {
-                        var audio = new Audio(data.audio)
                         audio.play()
                     }
                     play = boxTitle.appendChild(play)
