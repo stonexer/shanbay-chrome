@@ -9,6 +9,7 @@ loading.appendChild(spinner)
 loading = document.body.appendChild(loading)
 
 // 绑定点击事件
+var shanbayBoxWord = ''
 var shanbayBox = document.createElement('div')
 shanbayBox.className = "shanbay-box"
 
@@ -29,7 +30,8 @@ var mouseHandle = function(e) {
         if(text.length > 20 && text.indexOf(' ') > -1) {
             return boxTitle.innerHTML = '目前只能测量单词哦'
         }
-        boxTitle.innerHTML = text
+        boxTitle.innerHTML = shanbayBoxWord = text
+        boxDefinition.innerHTML = "正在搜索中..."
         var pos = calcBoxPos(e)
         shanbayBox.style.top = pos.y + "px"
         shanbayBox.style.left = pos.x + "px"
@@ -41,20 +43,24 @@ var mouseHandle = function(e) {
         })
         .then(function(json) {
             var data = json.data
-            boxDefinition.innerHTML = data.definition || '未找到定义'
-            
-            if(data.audio) {
-                var play = document.createElement('div')
-                play.className = "play"
-                play.onmouseover = function() {
-                    var audio = new Audio(data.audio)
-                    audio.play()
+            if(data.content === shanbayBoxWord) {
+                boxDefinition.innerHTML = data.definition || '未找到定义'
+                
+                if(data.audio) {
+                    var play = document.createElement('div')
+                    play.className = "play"
+                    play.onmouseover = function() {
+                        var audio = new Audio(data.audio)
+                        audio.play()
+                    }
+                    play = boxTitle.appendChild(play)
                 }
-                play = boxTitle.appendChild(play)
             }
         })
     } else {
         shanbayBox.style.display = 'none'
+        boxDefinition.innerHTML = ''
+        boxTitle.innerHTML = ''
     }
 }
 
