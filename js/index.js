@@ -62,42 +62,32 @@ var mouseHandle = function(e) {
 document.onmouseup = mouseHandle
 
 // 干掉页面守卫
+var cleanList = {
+    className: ['top-banner-ad-container', 'js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
+    id: ['header','dfp-ad--inline1'],
+    tagName: ['aside']
+}
 try {
-window.guardian = {}
-    var cleanList = {
-        className: ['top-banner-ad-container', 'js-adblock-sticky', 'content__labels', 'js-content-meta', 'content-footer', 'l-footer', 'submeta', 'after-article', 'content__secondary-column', "selection-sharing"],
-        id: ['header'],
-        tagName: ['aside']
-    }
+    window.guardian = {}
     clean(cleanList)
     getstyle(".content__main-column").setProperty('margin', 'auto', 'important')
 } catch(err) {}
 
+// 翻页按钮
+calcPageBox()
+
 window.onload = function () {
     window.guardian = {}
+    window.onresize = calcPageBox
     
     // 清除页面垃圾信息
     clean(cleanList)
     
     // 关闭loading
     loading.style.display = 'none'
-    
+
+    // 居中正文
     getstyle(".content__main-column").setProperty('margin', 'auto', 'important')
-    
-    // 翻页按钮
-    var upButton = document.createElement('div')
-    upButton.className = "up-button"
-    upButton.onclick = function(ev) {
-        animatedScrollTo(document.body, scrollY + innerHeight, 1000)
-    }
-    upButton = document.body.appendChild(upButton)
-    
-    var downButton = document.createElement('div')
-    downButton.className = "down-button"
-    downButton.onclick = function(ev) {
-        animatedScrollTo(document.body, scrollY - innerHeight, 1000)
-    }
-    downButton = document.body.appendChild(downButton)
 }
 
 function getstyle(sname) {
@@ -161,4 +151,42 @@ function calcBoxPos(e) {
         x: x,
         y: y
     }
+}
+
+function calcPageBox() {
+    var lastPageBox = document.getElementsByClassName('page-box')[0]
+    if(lastPageBox) document.body.removeChild(lastPageBox)
+    
+    var page = ~~(document.body.scrollHeight / innerHeight)
+
+    var pageBox = document.createElement('div')
+    pageBox.className = "page-box"
+
+    var downButton = document.createElement('div')
+    downButton.className = "down-button"
+    downButton.onclick = function(ev) {
+        animatedScrollTo(document.body, scrollY - innerHeight, 1000)
+    }
+    downButton = pageBox.appendChild(downButton)
+
+    for(var i = 0; i < page + 1; i++) {
+        var pageButton = document.createElement('div')
+        pageButton.className = "page-button"
+        pageButton.innerHTML = i+1
+        
+        pageButton.onclick = function(ev) {
+            animatedScrollTo(document.body, innerHeight * (this.innerHTML - 1), 1000)
+        }
+        
+        pageButton = pageBox.appendChild(pageButton)
+    }
+
+    var upButton = document.createElement('div')
+    upButton.className = "up-button"
+    upButton.onclick = function(ev) {
+        animatedScrollTo(document.body, scrollY + innerHeight, 1000)
+    }
+    upButton = pageBox.appendChild(upButton)
+
+    pageBox = document.body.appendChild(pageBox)
 }

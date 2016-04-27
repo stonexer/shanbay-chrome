@@ -23,7 +23,6 @@ var cleanById = function (id) {
 var cleanByTagName = function (tag) {
     try {
         var els = document.getElementsByTagName(tag)
-        console.log(els.length)
         Array.prototype.forEach.call(els, function(el) {
             removeElement(el)
         })
