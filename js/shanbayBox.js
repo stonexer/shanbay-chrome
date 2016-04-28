@@ -10,6 +10,8 @@
   boxTitle.className = "box-title"
   boxDefinition.className = "box-definition"
   
+  shanbayBox.onmouseup = function(e) {e.stopPropagation()}
+  
   boxTitle = shanbayBox.appendChild(boxTitle)
   boxDefinition = shanbayBox.appendChild(boxDefinition)
   shanbayBox = document.body.appendChild(shanbayBox)

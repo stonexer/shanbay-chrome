@@ -19,6 +19,7 @@
 	"content_scripts" : [
 		{
 			"matches" : ["http://www.theguardian.com/*"],
+			"run_at": "document_end",
 			"css" : ["css/index.css"],
 			"js" : [
 				"js/lib/animatedScrollTo.js", "js/lib/fetch.js",
