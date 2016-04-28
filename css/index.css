@@ -55,6 +55,7 @@
   padding: 0px;
   bottom: 20px;
   right: 20px;
+  -webkit-user-select: none;
 }
 
 .page-button {
@@ -64,7 +65,6 @@
   color: #209e85;
   font-size: 20px;
   font-weight: bold;
-  -webkit-user-select: none;
 }
 
 .up-button {
