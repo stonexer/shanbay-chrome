@@ -18,7 +18,7 @@
 	],
 	"content_scripts" : [
 		{
-			"matches" : ["http://www.theguardian.com/*"],
+			"matches" : ["http://www.theguardian.com/*","https://www.theguardian.com/*"],
 			"run_at": "document_end",
 			"css" : ["css/index.css"],
 			"js" : [
